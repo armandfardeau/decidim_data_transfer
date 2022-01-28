@@ -104,12 +104,6 @@ module Decidim
                .slice(*keys)
       end
 
-      def include_authors_attributes(element)
-        return element.attributes unless element.respond_to?(:authors)
-
-        element.attributes.merge({ authors: element.authors })
-      end
-
       def ressource_class_name
         @ressource_class_name ||= "#{namespace}::#{model_class}"
       end
