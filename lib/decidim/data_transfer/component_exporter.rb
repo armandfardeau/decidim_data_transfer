@@ -57,7 +57,20 @@ module Decidim
                                   :direct_message_types,
                                   :officialized_at,
                                   :officialized_as
-            )
+            ).merge(avatar_url: author.avatar_url)
+          end
+        }
+      end
+
+      def attachments_hash_for_ressource(ressource)
+        {
+          attachments: ressource.attachments.map do |attachment|
+            exportable_attributes(attachment,
+                                  :title,
+                                  :description,
+                                  :file,
+                                  :content_type
+            ).merge(file_url: attachment.file.url)
           end
         }
       end
@@ -81,6 +94,7 @@ module Decidim
                                 :execution_period,
                                 :state_published_at,
           ).merge(authors_hash_for_ressource(ressource))
+           .merge(attachments_hash_for_ressource(ressource))
         end
       end
 

@@ -5,6 +5,9 @@ describe Decidim::DataTransfer::ComponentExporter do
   let(:component) { create(:proposal_component) }
   let!(:ressources) { create_list(:proposal, 3, component: component) }
   let(:export_file) { Rails.root.join("tmp/data_transfer/export_component_#{component.id}.json") }
+  let!(:attachments) do
+    ressources.map { |ressource| create(:attachment, :with_image, attached_to: ressource) }
+  end
 
   describe "initialize" do
     it "returns a component" do
@@ -42,23 +45,24 @@ describe Decidim::DataTransfer::ComponentExporter do
 
       expect(ressources).to be_a(Array)
       expect(ressources.first.keys).to match_array([
-                                                  :title,
-                                                  :body,
-                                                  :state,
-                                                  :answered_at,
-                                                  :reference,
-                                                  :address,
-                                                  :latitude,
-                                                  :longitude,
-                                                  :published_at,
-                                                  :coauthorships_count,
-                                                  :position,
-                                                  :cost,
-                                                  :cost_report,
-                                                  :execution_period,
-                                                  :state_published_at,
-                                                  :authors
-                                                ])
+                                                     :title,
+                                                     :body,
+                                                     :state,
+                                                     :answered_at,
+                                                     :reference,
+                                                     :address,
+                                                     :latitude,
+                                                     :longitude,
+                                                     :published_at,
+                                                     :coauthorships_count,
+                                                     :position,
+                                                     :cost,
+                                                     :cost_report,
+                                                     :execution_period,
+                                                     :state_published_at,
+                                                     :authors,
+                                                     :attachments
+                                                   ])
     end
 
     it "serializes the authors" do
@@ -70,6 +74,7 @@ describe Decidim::DataTransfer::ComponentExporter do
                                                   :name,
                                                   :locale,
                                                   :avatar,
+                                                  :avatar_url,
                                                   :delete_reason,
                                                   :deleted_at,
                                                   :admin,
@@ -86,6 +91,19 @@ describe Decidim::DataTransfer::ComponentExporter do
                                                   :officialized_at,
                                                   :officialized_as
                                                 ])
+    end
+
+    it "serializes the attachments" do
+      attachments = subject.export_hash[:ressources].first[:attachments]
+
+      expect(attachments).to be_a(Array)
+      expect(attachments.first.keys).to match_array([
+                                                      :title,
+                                                      :description,
+                                                      :file,
+                                                      :file_url,
+                                                      :content_type
+                                                    ])
     end
   end
 
