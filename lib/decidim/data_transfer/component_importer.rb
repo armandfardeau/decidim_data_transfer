@@ -122,7 +122,7 @@ module Decidim
       end
 
       def import_hash(file_path)
-        return unless File.exist?(file_path)
+        raise "No file provided for #{file_path}" unless File.exist?(file_path)
 
         JSON.parse(File.read(file_path))
       end

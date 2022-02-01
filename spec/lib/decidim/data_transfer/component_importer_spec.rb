@@ -10,6 +10,14 @@ describe Decidim::DataTransfer::ComponentImporter do
   let(:file_path) { "./spec/export_component_dummy.json" }
   let(:import_hash) { JSON.parse(File.read(file_path)) }
 
+  context "with no file" do
+    let(:file_path) { "./spec/no_file.json" }
+
+    it "raises an error" do
+      expect { subject.import }.to raise_error("No file provided for #{file_path}")
+    end
+  end
+
   describe "initialize" do
     it "returns a participatory space" do
       expect(subject.instance_variable_get(:@participatory_space)).to eq(participatory_space)
