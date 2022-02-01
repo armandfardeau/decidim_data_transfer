@@ -8,8 +8,8 @@ module Decidim
       def initialize(component_id)
         @component = Decidim::Component.find_by(id: component_id)
         @resources = resource_class_name.constantize
-                                          .joins(:coauthorships)
-                                          .where(component: @component)
+                                        .joins(:coauthorships)
+                                        .where(component: @component)
       end
 
       def export_hash
@@ -70,7 +70,7 @@ module Decidim
                                   :description,
                                   :file,
                                   :content_type
-            ).merge(file_url: attachment.file.url)
+            ).merge(file_url: attachment.file.path.gsub(Rails.root.join("public").to_s, ""))
           end
         }
       end
