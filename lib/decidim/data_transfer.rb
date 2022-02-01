@@ -9,5 +9,6 @@ module Decidim
   # allows users to create data_transfer in a participatory space.
   module DataTransfer
     autoload :ComponentExporter, "decidim/data_transfer/component_exporter"
+    autoload :ComponentImporter, "decidim/data_transfer/component_importer"
   end
 end

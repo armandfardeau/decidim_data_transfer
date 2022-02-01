@@ -1,0 +1,274 @@
+{
+  "component": {
+    "settings": {
+      "steps": {
+        "4": {
+          "announcement": {
+            "fr": ""
+          },
+          "votes_hidden": false,
+          "votes_blocked": false,
+          "votes_enabled": false,
+          "announcement_fr": "",
+          "comments_blocked": false,
+          "creation_enabled": false,
+          "answers_with_costs": false,
+          "automatic_hashtags": "",
+          "suggested_hashtags": "Tracé \r\nStations\r\nAménagements\r\nModes_actifs\r\nInterconnexions\r\nEnvironnement\r\nChantier\r\nAutres",
+          "endorsements_blocked": false,
+          "endorsements_enabled": false,
+          "amendments_visibility": "participants",
+          "opinion_answering_enabled": true,
+          "amendment_creation_enabled": false,
+          "amendment_reaction_enabled": false,
+          "amendment_promotion_enabled": false,
+          "publish_answers_immediately": true
+        }
+      },
+      "global": {
+        "vote_limit": 0,
+        "announcement": {
+          "fr": "\u003cp\u003eConsultez les avis déposés ci-dessous lors de la concertation préalable. \u003c/p\u003e"
+        },
+        "opinion_limit": 0,
+        "opinion_length": 5000,
+        "announcement_fr": "\u003cp\u003eConsultez les avis déposés ci-dessous lors de la concertation préalable. \u003c/p\u003e",
+        "allow_card_image": true,
+        "comments_enabled": false,
+        "geocoding_enabled": false,
+        "amendments_enabled": false,
+        "attachments_allowed": true,
+        "new_opinion_help_text": {
+          "fr": "\u003cp\u003ePubliez votre avis en prenant bien soin de compléter chaque étape, et en cliquant sur \"publier\". \u003c/p\u003e"
+        },
+        "threshold_per_opinion": 0,
+        "minimum_votes_per_user": 0,
+        "new_opinion_help_text_fr": "\u003cp\u003ePubliez votre avis en prenant bien soin de compléter chaque étape, et en cliquant sur \"publier\". \u003c/p\u003e",
+        "new_opinion_body_template": {
+          "fr": ""
+        },
+        "official_opinions_enabled": false,
+        "opinion_answering_enabled": false,
+        "amendments_wizard_help_text": {
+          "fr": ""
+        },
+        "opinion_edit_before_minutes": 5,
+        "participatory_texts_enabled": false,
+        "collaborative_drafts_enabled": false,
+        "new_opinion_body_template_fr": "",
+        "resources_permissions_enabled": false,
+        "amendments_wizard_help_text_fr": "",
+        "opinion_wizard_step_1_help_text": {
+          "fr": ""
+        },
+        "opinion_wizard_step_2_help_text": {
+          "fr": ""
+        },
+        "opinion_wizard_step_3_help_text": {
+          "fr": ""
+        },
+        "opinion_wizard_step_4_help_text": {
+          "fr": ""
+        },
+        "opinion_wizard_step_1_help_text_fr": "",
+        "opinion_wizard_step_2_help_text_fr": "",
+        "opinion_wizard_step_3_help_text_fr": "",
+        "opinion_wizard_step_4_help_text_fr": "",
+        "can_accumulate_supports_beyond_threshold": false
+      },
+      "default_step": {
+        "announcement": {},
+        "votes_hidden": false,
+        "votes_blocked": false,
+        "votes_enabled": false,
+        "announcement_fr": null,
+        "comments_blocked": false,
+        "creation_enabled": false,
+        "answers_with_costs": false,
+        "automatic_hashtags": null,
+        "suggested_hashtags": null,
+        "endorsements_blocked": false,
+        "endorsements_enabled": true,
+        "amendments_visibility": "all",
+        "opinion_answering_enabled": true,
+        "amendment_creation_enabled": true,
+        "amendment_reaction_enabled": true,
+        "amendment_promotion_enabled": true,
+        "publish_answers_immediately": true
+      }
+    },
+    "name": {
+      "fr": "Avis"
+    },
+    "manifest_name": "opinions"
+  },
+  "resources": [
+    {
+      "title": "\u003cscript\u003ealert('TITLE');\u003c/script\u003e Tempora magnam ad. 205",
+      "body": "\u003cscript\u003ealert('BODY');\u003c/script\u003e Mollitia totam repudiandae.\nQuibusdam culpa vel.\nUllam occaecati dolor.",
+      "state": null,
+      "answered_at": null,
+      "reference": "Sr.-PROP-2022-02-1984",
+      "address": "Heidenreich Prairie, Abbotthaven",
+      "latitude": null,
+      "longitude": null,
+      "published_at": "2022-02-01T09:35:11.992Z",
+      "coauthorships_count": 1,
+      "position": 1,
+      "cost": null,
+      "cost_report": null,
+      "execution_period": null,
+      "state_published_at": null,
+      "authors": [
+        {
+          "email": "user7@example.org",
+          "name": "Lindsey Schinner 7",
+          "locale": "en",
+          "avatar": "avatar.jpg",
+          "delete_reason": null,
+          "deleted_at": null,
+          "admin": false,
+          "managed": false,
+          "roles": [],
+          "email_on_notification": true,
+          "nickname": "4f6jo7wpa_7",
+          "personal_url": "http://oconner.com/cornell",
+          "about": "\u003cscript\u003ealert(\"ABOUT\");\u003c/script\u003eOmnis ipsa aspernatur. Et recusandae odio.",
+          "type": "Decidim::User",
+          "extended_data": {},
+          "notification_types": "all",
+          "direct_message_types": "all",
+          "officialized_at": null,
+          "officialized_as": null,
+          "avatar_url": "/uploads/decidim/user/avatar/1984/avatar.jpg"
+        }
+      ],
+      "attachments": [
+        {
+          "title": {
+            "ca": "Perferendis consequatur doloremque. 209",
+            "en": "Velit saepe qui. 208",
+            "es": "Maiores nisi nam. 210"
+          },
+          "description": {
+            "ca": "\u003cp\u003eVeniam omnis praesentium. 212\u003c/p\u003e",
+            "en": "\u003cp\u003eCum esse consequatur. 211\u003c/p\u003e",
+            "es": "\u003cp\u003eFuga quo ut. 213\u003c/p\u003e"
+          },
+          "file": "city.jpeg",
+          "content_type": "image/jpeg",
+          "file_url": "/uploads/decidim/attachment/file/1006/city.jpeg"
+        }
+      ]
+    },
+    {
+      "title": "\u003cscript\u003ealert('TITLE');\u003c/script\u003e Consequatur doloribus accusantium. 206",
+      "body": "\u003cscript\u003ealert('BODY');\u003c/script\u003e Id quisquam consequatur.\nEt dolorum ipsum.\nQui fugiat voluptates.",
+      "state": null,
+      "answered_at": null,
+      "reference": "Sr.-PROP-2022-02-1985",
+      "address": "Tenesha Locks, Baumbachmouth",
+      "latitude": null,
+      "longitude": null,
+      "published_at": "2022-02-01T09:35:12.197Z",
+      "coauthorships_count": 1,
+      "position": 2,
+      "cost": null,
+      "cost_report": null,
+      "execution_period": null,
+      "state_published_at": null,
+      "authors": [
+        {
+          "email": "user8@example.org",
+          "name": "Mitsuko Wilkinson III 8",
+          "locale": "en",
+          "avatar": "avatar.jpg",
+          "delete_reason": null,
+          "deleted_at": null,
+          "admin": false,
+          "managed": false,
+          "roles": [],
+          "email_on_notification": true,
+          "nickname": "ty835vi_8",
+          "personal_url": "http://rowehartmann.com/ian",
+          "about": "\u003cscript\u003ealert(\"ABOUT\");\u003c/script\u003eDelectus nemo distinctio. Impedit laboriosam quisquam.",
+          "type": "Decidim::User",
+          "extended_data": {},
+          "notification_types": "all",
+          "direct_message_types": "all",
+          "officialized_at": null,
+          "officialized_as": null,
+          "avatar_url": "/uploads/decidim/user/avatar/1985/avatar.jpg"
+        }
+      ],
+      "attachments": [
+        {
+          "title": {
+            "ca": "Et similique iusto. 215",
+            "en": "Reprehenderit dolores aperiam. 214",
+            "es": "Exercitationem dolorem magnam. 216"
+          },
+          "description": {
+            "ca": "\u003cp\u003eUt at autem. 218\u003c/p\u003e",
+            "en": "\u003cp\u003eSed vel ducimus. 217\u003c/p\u003e",
+            "es": "\u003cp\u003eDeleniti distinctio dolores. 219\u003c/p\u003e"
+          },
+          "file": "city.jpeg",
+          "content_type": "image/jpeg",
+          "file_url": "/uploads/decidim/attachment/file/1007/city.jpeg"
+        }
+      ]
+    },
+    {
+      "title": "\u003cscript\u003ealert('TITLE');\u003c/script\u003e Amet eos tenetur. 207",
+      "body": "\u003cscript\u003ealert('BODY');\u003c/script\u003e Nostrum porro nam.\nOmnis reprehenderit et.\nDolore soluta eligendi.",
+      "state": null,
+      "answered_at": null,
+      "reference": "Sr.-PROP-2022-02-1986",
+      "address": "Richard Hills, Klinghaven",
+      "latitude": null,
+      "longitude": null,
+      "published_at": "2022-02-01T09:35:12.378Z",
+      "coauthorships_count": 1,
+      "position": 3,
+      "cost": null,
+      "cost_report": null,
+      "execution_period": null,
+      "state_published_at": null,
+      "authors": [
+        {
+          "email": "user9@example.org",
+          "name": "Dustin Barrows 9",
+          "locale": "en",
+          "avatar": "avatar.jpg",
+          "delete_reason": null,
+          "deleted_at": null,
+          "admin": false,
+          "managed": false,
+          "roles": [],
+          "email_on_notification": true,
+          "nickname": "mu_9",
+          "personal_url": "http://ebert.co/rhett_swaniawski",
+          "about": "\u003cscript\u003ealert(\"ABOUT\");\u003c/script\u003eIusto doloribus quod. Exercitationem impedit reiciendis.",
+          "type": "Decidim::User",
+          "extended_data": {},
+          "notification_types": "all",
+          "direct_message_types": "all",
+          "officialized_at": null,
+          "officialized_as": null,
+          "avatar_url": "/uploads/decidim/user/avatar/1986/avatar.jpg"
+        }
+      ],
+      "attachments": [
+        {
+          "title": "Reiciendis architecto laboriosam. 221",
+          "description": "\u003cp\u003eDolorem optio quidem. 224\u003c/p\u003e",
+          "file": "city.jpeg",
+          "content_type": "image/jpeg",
+          "file_url": "/uploads/decidim/attachment/file/1008/city.jpeg"
+        }
+      ]
+    }
+  ],
+  "resource_type": "Decidim::Opinions::Opinion"
+}

@@ -3,10 +3,10 @@ require "spec_helper"
 describe Decidim::DataTransfer::ComponentExporter do
   subject { described_class.new(component.id) }
   let(:component) { create(:proposal_component) }
-  let!(:ressources) { create_list(:proposal, 3, component: component) }
+  let!(:resources) { create_list(:proposal, 3, component: component) }
   let(:export_file) { Rails.root.join("tmp/data_transfer/export_component_#{component.id}.json") }
   let!(:attachments) do
-    ressources.map { |ressource| create(:attachment, :with_image, attached_to: ressource) }
+    resources.map { |resource| create(:attachment, :with_image, attached_to: resource) }
   end
 
   describe "initialize" do
@@ -14,8 +14,8 @@ describe Decidim::DataTransfer::ComponentExporter do
       expect(subject.instance_variable_get(:@component)).to eq(component)
     end
 
-    it "returns ressources for components" do
-      expect(subject.instance_variable_get(:@ressources)).to match_array(ressources)
+    it "returns resources for components" do
+      expect(subject.instance_variable_get(:@resources)).to match_array(resources)
     end
   end
 
@@ -34,17 +34,17 @@ describe Decidim::DataTransfer::ComponentExporter do
                                                  ])
     end
 
-    it "includes the ressource class type" do
-      ressource_type = subject.export_hash[:ressource_type]
+    it "includes the resource class type" do
+      resource_type = subject.export_hash[:resource_type]
 
-      expect(ressource_type).to eq("Decidim::Proposals::Proposal")
+      expect(resource_type).to eq("Decidim::Proposals::Proposal")
     end
 
-    it "returns a hash with the ressources" do
-      ressources = subject.export_hash[:ressources]
+    it "returns a hash with the resources" do
+      resources = subject.export_hash[:resources]
 
-      expect(ressources).to be_a(Array)
-      expect(ressources.first.keys).to match_array([
+      expect(resources).to be_a(Array)
+      expect(resources.first.keys).to match_array([
                                                      :title,
                                                      :body,
                                                      :state,
@@ -66,7 +66,7 @@ describe Decidim::DataTransfer::ComponentExporter do
     end
 
     it "serializes the authors" do
-      authors = subject.export_hash[:ressources].first[:authors]
+      authors = subject.export_hash[:resources].first[:authors]
 
       expect(authors).to be_a(Array)
       expect(authors.first.keys).to match_array([
@@ -94,7 +94,7 @@ describe Decidim::DataTransfer::ComponentExporter do
     end
 
     it "serializes the attachments" do
-      attachments = subject.export_hash[:ressources].first[:attachments]
+      attachments = subject.export_hash[:resources].first[:attachments]
 
       expect(attachments).to be_a(Array)
       expect(attachments.first.keys).to match_array([

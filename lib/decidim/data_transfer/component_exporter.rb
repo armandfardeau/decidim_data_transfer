@@ -7,7 +7,7 @@ module Decidim
 
       def initialize(component_id)
         @component = Decidim::Component.find_by(id: component_id)
-        @ressources = ressource_class_name.constantize
+        @resources = resource_class_name.constantize
                                           .joins(:coauthorships)
                                           .where(component: @component)
       end
@@ -19,8 +19,8 @@ module Decidim
                                            :name,
                                            :manifest_name
           ),
-          ressources: ressources_hash,
-          ressource_type: ressource_class_name
+          resources: resources_hash,
+          resource_type: resource_class_name
         }
       end
 
@@ -33,10 +33,10 @@ module Decidim
 
       private
 
-      def authors_hash_for_ressource(ressource)
-        return unless ressource.respond_to?(:authors)
+      def authors_hash_for_resource(resource)
+        return unless resource.respond_to?(:authors)
         {
-          authors: ressource.authors.map do |author|
+          authors: resource.authors.map do |author|
             exportable_attributes(author,
                                   :email,
                                   :name,
@@ -62,9 +62,9 @@ module Decidim
         }
       end
 
-      def attachments_hash_for_ressource(ressource)
+      def attachments_hash_for_resource(resource)
         {
-          attachments: ressource.attachments.map do |attachment|
+          attachments: resource.attachments.map do |attachment|
             exportable_attributes(attachment,
                                   :title,
                                   :description,
@@ -75,9 +75,9 @@ module Decidim
         }
       end
 
-      def ressources_hash
-        @ressources.map do |ressource|
-          exportable_attributes(ressource,
+      def resources_hash
+        @resources.map do |resource|
+          exportable_attributes(resource,
                                 :title,
                                 :body,
                                 :state,
@@ -93,8 +93,8 @@ module Decidim
                                 :cost_report,
                                 :execution_period,
                                 :state_published_at,
-          ).merge(authors_hash_for_ressource(ressource))
-           .merge(attachments_hash_for_ressource(ressource))
+          ).merge(authors_hash_for_resource(resource))
+           .merge(attachments_hash_for_resource(resource))
         end
       end
 
@@ -104,8 +104,8 @@ module Decidim
                .slice(*keys)
       end
 
-      def ressource_class_name
-        @ressource_class_name ||= "#{namespace}::#{model_class}"
+      def resource_class_name
+        @resource_class_name ||= "#{namespace}::#{model_class}"
       end
 
       def namespace
