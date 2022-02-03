@@ -39,6 +39,7 @@ module Decidim
       end
 
       def import_component
+        puts "Importing #{@import_hash.keys.tally["component"]} components"
         component_hash = rewrited_component_attributes(@import_hash["component"])
 
         component_attributes = {
@@ -60,11 +61,28 @@ module Decidim
         @fallback_class.constantize
       end
 
+      def localized_attributes(attributes)
+        attributes[:title] = localized_attribute(attributes[:title])
+        attributes[:body] = localized_attribute(attributes[:title])
+
+        attributes
+      end
+
+      def localized_attribute(attribute)
+        return attribute if attribute.is_a?(Hash)
+
+        I18n.available_locales.each_with_object({}) do |locale, hash|
+          hash[locale.to_s] = attribute
+        end
+      end
+
       def import_resources(component)
-        @import_hash["resources"].each do |resource_hash|
-          resource_attributes = resource_hash.merge(component: component).deep_symbolize_keys
+        @import_hash["resources"].each_with_index do |resource_hash, index|
+          puts "Importing resource ##{index + 1} on #{@import_hash["resources"].count}"
+          resource_attributes = localized_attributes(resource_hash.merge(component: component).deep_symbolize_keys)
           instance = resource_class(@import_hash["resource_type"]).new(resource_attributes.except(:authors, :attachments))
 
+          puts "Importing authors"
           resource_hash["authors"].each do |author|
             user = create_user(author)
             instance.add_coauthor(user)
@@ -72,6 +90,7 @@ module Decidim
 
           instance.save!
 
+          puts "Importing attachments"
           resource_hash["attachments"].each do |attachments|
             import_attachments(instance, attachments)
           end
@@ -112,13 +131,15 @@ module Decidim
 
       def import_attachments(instance, attachments)
         file = File.open(Rails.root.join("tmp/data_transfer#{attachments["file_url"]}"))
-        Decidim::Attachment.create!(
-          title: attachments["title"],
-          file: file,
+        attachment = Decidim::Attachment.new(
+          title: localized_attribute(attachments["title"]),
           content_type: attachments["content_type"],
+          attached_to: instance,
           file_size: file.size,
-          attached_to: instance
+          file: file
         )
+
+        attachment.save!
       end
 
       def import_hash(file_path)
