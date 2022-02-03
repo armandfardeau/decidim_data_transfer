@@ -17,6 +17,4 @@ Gem::Specification.new do |s|
   s.description = "Data transfer for Decidim."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
-
-  s.add_dependency "decidim-core", Decidim::DataTransfer.version
 end

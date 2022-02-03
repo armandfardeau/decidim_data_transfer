@@ -81,7 +81,13 @@ module Decidim
                                 :title,
                                 :body,
                                 :state,
+                                :state,
+                                :answer,
                                 :answered_at,
+                                :cost,
+                                :cost_report,
+                                :execution_period,
+                                :state_published_at,
                                 :reference,
                                 :address,
                                 :latitude,
@@ -89,10 +95,6 @@ module Decidim
                                 :published_at,
                                 :coauthorships_count,
                                 :position,
-                                :cost,
-                                :cost_report,
-                                :execution_period,
-                                :state_published_at,
           ).merge(authors_hash_for_resource(resource))
            .merge(attachments_hash_for_resource(resource))
         end

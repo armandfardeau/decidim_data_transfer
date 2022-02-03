@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim"
+gem "decidim", "0.24.3"
 gem "decidim-data_transfer", path: "."
 
 gem "puma", ">= 4.3"
@@ -14,7 +14,7 @@ gem "uglifier", "~> 4.1"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
-  gem "decidim-dev"
+  gem "decidim-dev", "0.24.3"
 end
 
 group :development do

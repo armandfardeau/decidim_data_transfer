@@ -45,24 +45,25 @@ describe Decidim::DataTransfer::ComponentExporter do
 
       expect(resources).to be_a(Array)
       expect(resources.first.keys).to match_array([
-                                                     :title,
-                                                     :body,
-                                                     :state,
-                                                     :answered_at,
-                                                     :reference,
-                                                     :address,
-                                                     :latitude,
-                                                     :longitude,
-                                                     :published_at,
-                                                     :coauthorships_count,
-                                                     :position,
-                                                     :cost,
-                                                     :cost_report,
-                                                     :execution_period,
-                                                     :state_published_at,
-                                                     :authors,
-                                                     :attachments
-                                                   ])
+                                                    :title,
+                                                    :body,
+                                                    :state,
+                                                    :answer,
+                                                    :answered_at,
+                                                    :cost,
+                                                    :cost_report,
+                                                    :execution_period,
+                                                    :state_published_at,
+                                                    :reference,
+                                                    :address,
+                                                    :latitude,
+                                                    :longitude,
+                                                    :published_at,
+                                                    :coauthorships_count,
+                                                    :position,
+                                                    :authors,
+                                                    :attachments
+                                                  ])
     end
 
     it "serializes the authors" do
