@@ -1,22 +1,24 @@
 module Decidim
   module DataTransfer
     class ComponentImporter
-      def self.for(participatory_space_type, participatory_space_id, file_path, user_id, fallback_class)
-        new(participatory_space_type, participatory_space_id, file_path, user_id, fallback_class).import
+      def self.for(participatory_space_type, participatory_space_id, file_path, user_id, component_id, fallback_class)
+        new(participatory_space_type, participatory_space_id, file_path, user_id, component_id, fallback_class).import
       end
 
-      def initialize(participatory_space_type, participatory_space_id, file_path, user_id, fallback_class)
+      def initialize(participatory_space_type, participatory_space_id, file_path, user_id, component_id, fallback_class)
         @participatory_space_type = participatory_space_type
         @participatory_space = participatory_space_type.constantize
                                                        .find(participatory_space_id)
         @import_hash = import_hash(file_path)
         @current_user = Decidim::User.find(user_id)
+        @component_id = component_id
         @fallback_class = fallback_class
+        @status = {}
       end
 
       def import
         ActiveRecord::Base.transaction do
-          component = import_component
+          component = @component_id.present? ? Decidim::Component.find(@component_id) : import_component
           import_resources(component)
         end
       end
@@ -139,6 +141,9 @@ module Decidim
         )
 
         attachment.save!
+
+      rescue Errno::ENOENT
+        puts "File not found: #{attachments["file_url"]}"
       end
 
       def import_hash(file_path)

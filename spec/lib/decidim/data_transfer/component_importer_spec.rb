@@ -1,7 +1,8 @@
 require "spec_helper"
 
 describe Decidim::DataTransfer::ComponentImporter do
-  subject { described_class.new(participatory_space_type, participatory_space.id, file_path, admin.id, fallback_class) }
+  subject { described_class.new(participatory_space_type, participatory_space.id, file_path, admin.id, component&.id, fallback_class) }
+  let(:component) { nil }
   let(:organization) { create(:organization) }
   let!(:admin) { create(:user, :admin, organization: organization) }
   let(:participatory_space) { create(:participatory_process, organization: organization) }
@@ -38,6 +39,26 @@ describe Decidim::DataTransfer::ComponentImporter do
   end
 
   describe "Import" do
+    context "when component id is provided" do
+      let!(:component) { create(:proposal_component, participatory_space: participatory_space) }
+
+      it "doesn't creates a component" do
+        expect { subject.import }.to change { Decidim::Component.count }.by(0)
+      end
+
+      it "uses the component id" do
+        expect { subject.import }.to change { Decidim::Proposals::Proposal.count }.by(3)
+        expect(Decidim::Proposals::Proposal.last.component).to eq(component)
+        expect(Decidim::Proposals::Proposal.last.title).to eq({
+                                                                "ca" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",
+                                                                "en" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",
+                                                                "es" => "<script>alert('TITLE');</script> Amet eos tenetur. 207"
+                                                              })
+        expect(Decidim::Proposals::Proposal.last.authors.first.email).to eq("user9@example.org")
+        expect { subject.import }.to change { Decidim::Attachment.count }.by(3)
+      end
+    end
+
     it "creates a component" do
       expect { subject.import }.to change { Decidim::Component.count }.by(1)
       expect(Decidim::Component.last.manifest_name).to eq("proposals")
