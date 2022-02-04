@@ -102,7 +102,6 @@ module Decidim
       def existing_user(author)
         Decidim::User.find_by(
           organization: @participatory_space.organization,
-          name: author["name"],
           email: author["email"].downcase,
         )
       end
