@@ -48,11 +48,17 @@ describe Decidim::DataTransfer::ComponentImporter do
 
       it "uses the component id" do
         expect { subject.import }.to change { Decidim::Proposals::Proposal.count }.by(3)
+        expect { subject.import }.to change { Decidim::ActionLog.count }.by(3)
         expect(Decidim::Proposals::Proposal.last.component).to eq(component)
         expect(Decidim::Proposals::Proposal.last.title).to eq({
                                                                 "ca" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",
                                                                 "en" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",
                                                                 "es" => "<script>alert('TITLE');</script> Amet eos tenetur. 207"
+                                                              })
+        expect(Decidim::Proposals::Proposal.last.body).to eq({
+                                                                "ca" => "<script>alert('BODY');</script> Nostrum porro nam.\nOmnis reprehenderit et.\nDolore soluta eligendi.",
+                                                                "en" => "<script>alert('BODY');</script> Nostrum porro nam.\nOmnis reprehenderit et.\nDolore soluta eligendi.",
+                                                                "es" => "<script>alert('BODY');</script> Nostrum porro nam.\nOmnis reprehenderit et.\nDolore soluta eligendi."
                                                               })
         expect(Decidim::Proposals::Proposal.last.authors.first.email).to eq("user9@example.org")
         expect { subject.import }.to change { Decidim::Attachment.count }.by(3)
@@ -68,7 +74,8 @@ describe Decidim::DataTransfer::ComponentImporter do
 
     it "creates resources" do
       expect { subject.import }.to change { Decidim::Proposals::Proposal.count }.by(3)
-      expect(Decidim::Proposals::Proposal.last.component).to eq(Decidim::Component.last)
+      expect { subject.import }.to change { Decidim::ActionLog.count }.by(3)
+      expect(Decidim::Proposals::Proposal.last.component).not_to eq(nil)
       expect(Decidim::Proposals::Proposal.last.title).to eq({
                                                               "ca" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",
                                                               "en" => "<script>alert('TITLE');</script> Amet eos tenetur. 207",

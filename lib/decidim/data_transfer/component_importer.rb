@@ -65,7 +65,7 @@ module Decidim
 
       def localized_attributes(attributes)
         attributes[:title] = localized_attribute(attributes[:title])
-        attributes[:body] = localized_attribute(attributes[:title])
+        attributes[:body] = localized_attribute(attributes[:body])
 
         attributes
       end
@@ -90,7 +90,14 @@ module Decidim
             instance.add_coauthor(user)
           end
 
-          instance.save!
+          Decidim.traceability.perform_action!(
+            "publish",
+            instance,
+            @current_user,
+            visibility: "public-only"
+          ) do
+            instance.save!
+          end
 
           puts "Importing attachments"
           resource_hash["attachments"].each do |attachments|
