@@ -3,4 +3,12 @@ en:
   devise:
     mailer:
       invitation_instructions:
-        invited_you_as_user: "%{invited_by} has invited you as a user of %{application}. You can accept it through the link below."
+        accept: Accept
+        accept_until: Accept until %{due_date}
+        hello: Hello
+        ignore: Ignore
+        invited_you_as_user: "%{invited_by} has invited you as a user of %{application}.
+          You can accept it through the link below."
+        someone_invited_you_as_user: Someone invited you as user
+      invited_you_as_user:
+        subject: You have been invited to join %{organization}

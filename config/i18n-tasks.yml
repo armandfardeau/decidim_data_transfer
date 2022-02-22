@@ -5,6 +5,7 @@ locales: [en]
 
 ignore_unused:
   - "decidim.components.data_transfer.name"
+  - devise.mailer.invited_you_as_user.subject
 
 ignore_missing:
   - decidim.participatory_processes.scopes.global

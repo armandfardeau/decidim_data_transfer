@@ -6,9 +6,9 @@ namespace :decidim do
     end
 
     desc "Import a file to a participatory space"
-    task :components_importer, [:participatory_space_id, :participatory_space_type, :file_path, :user_id, :component_id, :fallback_class] => :environment do |_task, args|
-      Decidim::DataTransfer::ComponentImporter.for(args[:participatory_space_id],
-                                                   args[:participatory_space_type],
+    task :components_importer, [:participatory_space_type, :participatory_space_id, :file_path, :user_id, :component_id, :fallback_class] => :environment do |_task, args|
+      Decidim::DataTransfer::ComponentImporter.for(args[:participatory_space_type],
+                                                   args[:participatory_space_id],
                                                    args[:file_path],
                                                    args[:user_id],
                                                    args[:component_id],

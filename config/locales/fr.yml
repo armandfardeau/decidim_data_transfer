@@ -1,0 +1,14 @@
+---
+
+fr:
+  devise:
+    mailer:
+      invitation_instructions:
+        accept: Accepter l’invitation et créer mon nouveau compte
+        accept_until: Cette invitation est valable pendant un mois, jusqu’au %{due_date}
+        hello: Madame, Monsieur,
+        ignore: Si vous ne souhaitez pas rejoindre la plateforme vous pouvez ignorer ce message.
+        invited_you_as_user: "Vous avez participé à la concertation préalable du T6 Nord. Le SYTRAL vous invite à créer un compte sur la nouvelle plateforme participative Destinations 2026 afin de retrouver vos contributions et toutes les actualités du projet. Vous pouvez accepter cette invitation en cliquant sur le lien suivant :"
+        someone_invited_you_as_user: Someone invited you as user
+      invited_you_as_user:
+        subject: Vous avez été invité à rejoindre la plateforme Destinations 2026 du %{organization}
